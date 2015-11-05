@@ -22,6 +22,12 @@ class TestIdentifierProto(unittest.TestCase):
     def test_gets_class_for_identifier(self):
         self.assertEqual(Handshake, identifier.get_packet_from_id(0))
 
+    def test_provides_magic_attrs(self):
+        self.assertEqual(0, identifier.handshake)
+        self.assertEqual(1, identifier.handshake_ack)
+        with self.assertRaises(AttributeError):
+            identifier.handshake_ackasdf
+
 
 class TestRw(unittest.TestCase):
 
@@ -57,4 +63,22 @@ class TestRw(unittest.TestCase):
         actual += writer.read()
 
         self.assertEqual(expected, actual)
+
+    def test_goes_both_ways(self):
+        # the point of this is basically just to pick up any slight
+        # deviations between the Reader/Writer. They should be
+        # perfectly "symmetrical", or there is an error somewhere.
+
+        reader = Reader()
+        writer = Writer()
+
+        for x in range(0, 100):
+            err = Error()
+            err.message = 'msg%d' % x
+            writer.push(err)
+            reader.push(writer.read())
+
+        for x in range(0, 100):
+            packet, data = reader.read()
+            self.assertEqual('msg%d' % x, packet.message)
 

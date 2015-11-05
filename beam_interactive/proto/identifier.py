@@ -1,16 +1,23 @@
 from .tetris_pb2 import Handshake, HandshakeACK, Report, Error, ProgressUpdate
 
+_default_packets = [
+    { 'name': 'handshake', 'cls': Handshake, 'id': 0 },
+    { 'name': 'handshake_ack', 'cls': HandshakeACK, 'id': 1 },
+    { 'name': 'report', 'cls': Report, 'id': 2 },
+    { 'name': 'error', 'cls': Error, 'id': 3 },
+    { 'name': 'progress_update', 'cls': ProgressUpdate, 'id': 4 },
+]
 
 class _Identifier():
+    """
+    identifier is used for looking up classes from packet IDs
+    and vise versa. Additionally, it provides magic attributes
+    that look up the ID of packets by their name. For example,
+    `identifier.error` => 3.
+    """
 
-    def __init__(self):
-        self.packets = [
-            { 'cls': Handshake, 'id': 0 },
-            { 'cls': HandshakeACK, 'id': 1 },
-            { 'cls': Report, 'id': 2 },
-            { 'cls': Error, 'id': 3 },
-            { 'cls': ProgressUpdate, 'id': 4 },
-        ]
+    def __init__(self, packets=_default_packets):
+        self._packets = packets
 
     def get_packet_id(self, packet):
         """
@@ -18,8 +25,11 @@ class _Identifier():
         if no ID was found.
         """
 
-        return next((p['id'] for p in self.packets
-            if isinstance(packet, p['cls'])), None)
+        for p in self._packets:
+            if isinstance(packet, p['cls']):
+                return p['id']
+
+        return None
 
     def get_packet_from_id(self, id):
         """
@@ -27,7 +37,22 @@ class _Identifier():
         the given ID. Returns Nonw if one was not found.
         """
 
-        return next((p['cls'] for p in self.packets
-            if p['id'] == id), None)
+        for packet in self._packets:
+            if packet['id'] == id:
+                return packet['cls']
+
+        return None
+
+    def __getattr__(self, name):
+        """
+        Generic getter that can look up packet IDs by their name.
+        """
+
+        for packet in self._packets:
+            if packet['name'] == name:
+                return packet['id']
+
+        raise AttributeError
+
 
 identifier = _Identifier()

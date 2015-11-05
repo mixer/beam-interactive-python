@@ -40,7 +40,7 @@ loop = asyncio.get_event_loop()
 
 @asyncio.coroutine
 def connect():
-    conn = yield from start(loop, '127.0.0.1:3442', 42, 'asdf')
+    conn = yield from start('127.0.0.1:3442', 42, 'asdf', loop)
     handlers = {
         proto.id.error: on_error,
         proto.id.report: on_report,
@@ -48,10 +48,10 @@ def connect():
     }
 
     while (yield from conn.wait_packet()):
-        bytes = conn.last_packet()
-        decoded, id = proto.decode(bytes)
+        decoded, bytes = conn.get_packet()
+        id = proto.id.get_packet_id(decoded)
 
-        if id is None: # did not recognize the packet
+        if decoded is None:
             handlers.unknown(bytes)
         elif id in handlers:
             handlers[id](packet)

@@ -3,7 +3,7 @@ from .connection import Connection
 from .proto import Handshake
 
 @asyncio.coroutine
-def start(loop, remote, channel, key):
+def start(address, channel, key, loop=None):
     """Starts a new Interactive client.
 
     Takes the remote address of the Tetris robot, as well as the
@@ -12,14 +12,21 @@ def start(loop, remote, channel, key):
     IDs to handler functions (from the .proto package).
     """
 
-    if isinstance(address, (list, tuple)):
-        address = ':'.join(address)
+    if loop is None:
+        loop = asyncio.get_event_loop()
 
-    reader, writer = yield from asyncio.open_unix_connection(
-        address, loop=loop)
+    if isinstance(address, str):
+        host, port = address.split(':')
+    else:
+        host, port = address
 
-    conn = Connection(reader, writer)
+    reader, writer = yield from asyncio.open_connection(
+        host, port, loop=loop)
+
+    conn = Connection(reader, writer, loop)
     conn.send(_create_handshake(channel, key))
+
+    return conn
 
 
 def _create_handshake(channel, key):
@@ -29,5 +36,5 @@ def _create_handshake(channel, key):
     """
     hsk = Handshake()
     hsk.channel = channel
-    hsk.key = key
+    hsk.streamKey = key
     return hsk
