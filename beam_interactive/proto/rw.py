@@ -1,5 +1,5 @@
 from .identifier import identifier
-from .varint import varuint_decode, NotEnoughDataException
+from .varint import varuint_decode, varuint_encode, NotEnoughDataException
 
 
 class _DecoderFailedException(Exception):
@@ -12,13 +12,13 @@ class _Decoder():
         self._start = 0
         self._buffer = buffer
 
-        self._size = self._read_uvarint()
-        self._id = self._read_uvarint()
+        self._size = self._read_variunt()
+        self._id = self._read_variunt()
 
-    def _read_uvarint(self):
+    def _read_variunt(self):
         try:
             n, read = varuint_decode(self._buffer, self._start)
-            self._start += read
+            self._start = read
             return n
         except NotEnoughDataException:
             return None
@@ -30,7 +30,9 @@ class _Decoder():
         """
         # these will have been set to None on initialize if
         # they were incomplete.
-        return self._id is not None and self._size is not None
+        return self._id is not None \
+            and self._size is not None \
+            and len(self._buffer) - self._start >= self._size
 
     def is_known(self):
         """
@@ -55,10 +57,7 @@ class _Decoder():
             start = 0
         else:
             start = self._start
-        print("===")
-        print(self._size)
-        print(self._start)
-        print(self._id)
+
         return self._buffer[start:self._start+self._size]
 
     def decode(self):
@@ -83,12 +82,13 @@ class Reader():
     def __init__(self):
         self.buffer = b''
 
-
     def push(self, data):
         """
         Appends binary data to the reader.
         """
+
         self.buffer += data
+        return self
 
     def read(self):
         """
@@ -120,5 +120,51 @@ class Reader():
             raise StopIteration
 
         return item
+
+
+class Writer():
+    """
+    The opposite of Reader, Writer helps with writing packets.
+    You can .push() packets to it, which are encoded and then
+    written to an internal buffer which is read via .read().
+    """
+
+    def __init__(self):
+        self.buffer = bytearray()
+
+    def _write(self, data):
+        if isinstance(data, int):
+            self.buffer.append(data)
+        else:
+            self.buffer.extend(data)
+
+    def _write_variunt(self, number):
+        varuint_encode(self._write, number)
+
+    def push(self, packet):
+        """
+        Pushes a packet to the writer, encoding it on the internal
+        buffer.
+        """
+
+        id = identifier.get_packet_id(packet)
+        if id is None:
+            raise Exception('unknown packet')
+
+        encoded = packet.SerializeToString()
+
+        self._write_variunt(len(encoded))
+        self._write_variunt(id)
+        self._write(encoded)
+
+        return self
+
+    def read(self):
+        """
+        Returns and consumes all encoded data from the writer.
+        """
+
+        buffer, self.buffer = self.buffer, bytearray()
+        return buffer
 
 

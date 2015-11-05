@@ -128,10 +128,10 @@ def _VarintEncoder():
     bits = value & 0x7f
     value >>= 7
     while value:
-      write(local_chr(0x80|bits))
+      write(0x80|bits)
       bits = value & 0x7f
       value >>= 7
-    return write(local_chr(bits))
+    return write(bits)
 
   return EncodeVarint
 
@@ -146,10 +146,10 @@ def _SignedVarintEncoder():
     bits = value & 0x7f
     value >>= 7
     while value:
-      write(local_chr(0x80|bits))
+      write(0x80|bits)
       bits = value & 0x7f
       value >>= 7
-    return write(local_chr(bits))
+    return write(bits)
 
   return EncodeSignedVarint
 

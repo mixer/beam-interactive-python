@@ -1,7 +1,8 @@
 import unittest
+import random
 from beam_interactive.proto.identifier import identifier
-from beam_interactive.proto.tetris_pb2 import Handshake
-from beam_interactive.proto.rw import Reader
+from beam_interactive.proto.tetris_pb2 import Handshake, Error
+from beam_interactive.proto.rw import Reader, Writer
 
 class Foo():
     pass
@@ -27,8 +28,33 @@ class TestRw(unittest.TestCase):
     def test_reads_packets(self):
         data = read('hundred_packets')
         reader = Reader()
-        reader.push(data)
 
-        for packet in reader:
-            decoded, byte = packet
-            print(decoded)
+        pos = 0
+        msg = 0
+        while pos < len(data):
+            read_bytes = random.randint(0, 10)
+            reader.push(data[pos:pos+read_bytes])
+            pos += read_bytes
+
+            for packet in reader:
+                decoded, byte = packet
+                self.assertEqual('msg%d' % msg, decoded.message)
+                msg += 1
+
+    def test_writes_packets(self):
+        expected = read('hundred_packets')
+        writer = Writer()
+        actual = b''
+
+        for x in range(0, 100):
+            err = Error()
+            err.message = 'msg%d' % x
+            writer.push(err)
+
+            if random.random() < 0.2:
+                actual += writer.read()
+
+        actual += writer.read()
+
+        self.assertEqual(expected, actual)
+
