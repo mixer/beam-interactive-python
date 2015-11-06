@@ -1,0 +1,8 @@
+language: python
+python:
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "nightly"
+install: python setup.py -q install
+script: make test
