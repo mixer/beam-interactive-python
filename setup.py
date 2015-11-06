@@ -5,7 +5,7 @@ depends = ['protobuf']
 if sys.version_info >= (3, 5):
     pass
 elif sys.version_info >= (3, 3):
-    install_requires.append('asyncio')
+    depends.append('asyncio')
 else:
     raise Exception("beam-interactive-python makes use of asyncio," +
                     " and therefore requires Python >= 3.3.")
