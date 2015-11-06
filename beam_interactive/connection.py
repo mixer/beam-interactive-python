@@ -130,7 +130,7 @@ class Connection():
         Returns true if the connection is still open.
         """
 
-        return self._states
+        return self._state == states['open']
 
     @property
     def closed(self):

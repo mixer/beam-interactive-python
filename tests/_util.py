@@ -11,9 +11,30 @@ def run_until_complete(fun):
     def wrapper(test, *args, **kw):
         loop = test.loop
         ret = loop.run_until_complete(
-            asyncio.wait_for(fun(test, *args, **kw), 15, loop=loop))
+            asyncio.wait_for(fun(test, *args, **kw), 5, loop=loop))
         return ret
     return wrapper
+
+
+class EchoServer(asyncio.Protocol):
+    """
+    Based upon:
+    https://github.com/python/asyncio/blob/master/examples/tcp_echo.py
+    """
+
+    TIMEOUT = 5.0
+
+    def set_loop(self, loop):
+        self.loop = loop
+
+    def connection_made(self, transport):
+        self.transport = transport
+
+    def data_received(self, data):
+        self.transport.write(data)
+
+    def eof_received(self):
+        pass
 
 
 class AsyncTestCase(unittest.TestCase):
@@ -35,19 +56,11 @@ class AsyncTestCase(unittest.TestCase):
     def make_echo_server(self):
         """
         Creates and returns the (ip, port) of a basic TCP echo
-        server. This function is taken basically straight from
-        the Python docs.
+        server.
         """
-        @asyncio.coroutine
-        def handle_echo(reader, writer):
-            data = yield from reader.read(100)
-            writer.write(data)
-            yield from writer.drain()
-            writer.close()
 
         addr = ('127.0.0.1', 8888)
-        coro = asyncio.start_server(handle_echo,
-            addr[0], addr[1], loop=self.loop)
+        coro = self.loop.create_server(EchoServer, addr[0], addr[1])
         self.server = self.loop.run_until_complete(coro)
 
         return addr

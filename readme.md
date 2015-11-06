@@ -47,7 +47,7 @@ def connect():
         'unknown': on_unknown
     }
 
-    while (yield from conn.wait_packet()):
+    while (yield from conn.wait_message()):
         decoded, bytes = conn.get_packet()
         id = proto.id.get_packet_id(decoded)
 
