@@ -1,12 +1,13 @@
 from .tetris_pb2 import Handshake, HandshakeACK, Report, Error, ProgressUpdate
 
 _default_packets = [
-    { 'name': 'handshake', 'cls': Handshake, 'id': 0 },
-    { 'name': 'handshake_ack', 'cls': HandshakeACK, 'id': 1 },
-    { 'name': 'report', 'cls': Report, 'id': 2 },
-    { 'name': 'error', 'cls': Error, 'id': 3 },
-    { 'name': 'progress_update', 'cls': ProgressUpdate, 'id': 4 },
+    {'name': 'handshake', 'cls': Handshake, 'id': 0},
+    {'name': 'handshake_ack', 'cls': HandshakeACK, 'id': 1},
+    {'name': 'report', 'cls': Report, 'id': 2},
+    {'name': 'error', 'cls': Error, 'id': 3},
+    {'name': 'progress_update', 'cls': ProgressUpdate, 'id': 4},
 ]
+
 
 class _Identifier():
     """

@@ -4,7 +4,8 @@ from .proto import Reader, Writer
 
 MAX_CHUNK_SIZE = 65536
 
-states = { 'open': 0, 'closing': 1, 'closed': 2 }
+states = {'open': 0, 'closing': 1, 'closed': 2}
+
 
 class NoPacketException(Exception):
     """
@@ -87,7 +88,6 @@ class Connection():
         yield from self._read_waiter
         return self.wait_message()
 
-
     def get_packet(self):
         """
         Returns the last packet from the queue of read packets.
@@ -106,7 +106,6 @@ class Connection():
         self._writer_inst.push(packet)
         self._writer.write(self._writer_inst.read())
         return self
-
 
     def _do_close(self):
         """
@@ -140,6 +139,3 @@ class Connection():
         """
 
         return not self.open
-
-
-

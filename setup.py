@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 depends = ['protobuf']
 if sys.version_info >= (3, 5):
     pass
-elif PY_VER >= (3, 3):
+elif sys.version_info >= (3, 3):
     install_requires.append('asyncio')
 else:
     raise Exception("beam-interactive-python makes use of asyncio," +

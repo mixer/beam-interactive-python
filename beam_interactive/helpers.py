@@ -2,6 +2,7 @@ import asyncio
 from .connection import Connection
 from .proto import Handshake
 
+
 @asyncio.coroutine
 def start(address, channel, key, loop=None):
     """Starts a new Interactive client.

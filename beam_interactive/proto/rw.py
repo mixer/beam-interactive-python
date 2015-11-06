@@ -71,7 +71,6 @@ class _Decoder():
         return packet
 
 
-
 class Reader():
     """
     Reader helps with decoding packets. You can .push() some
@@ -166,5 +165,3 @@ class Writer():
 
         buffer, self.buffer = self.buffer, bytearray()
         return buffer
-
-
