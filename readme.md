@@ -18,7 +18,6 @@ def on_report(report, conn):
     print('We got a report:')
     print(report)
 
-
     # Let's send some silly progress update! See:
     # https://developers.google.com/protocol-buffers/docs/pythontutorial
     # for working with protocol buffers in Python
@@ -31,10 +30,6 @@ def on_report(report, conn):
     conn.send(report)
 
 
-def on_unknown(bytes):
-    print('We got a bunch of unknown bytes')
-
-
 loop = asyncio.get_event_loop()
 
 
@@ -43,8 +38,7 @@ def connect():
     conn = yield from start('127.0.0.1:3442', 42, 'asdf', loop)
     handlers = {
         proto.id.error: on_error,
-        proto.id.report: on_report,
-        'unknown': on_unknown
+        proto.id.report: on_report
     }
 
     while (yield from conn.wait_message()):
@@ -52,7 +46,8 @@ def connect():
         id = proto.id.get_packet_id(decoded)
 
         if decoded is None:
-            handlers.unknown(bytes)
+            print('We got a bunch of unknown bytes')
+            print(bytes)
         elif id in handlers:
             handlers[id](packet)
         else:
