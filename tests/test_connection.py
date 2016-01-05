@@ -1,10 +1,9 @@
-from ._util import AsyncTestCase, run_until_complete
+from ._util import AsyncTestCase
 from beam_interactive.proto import Error
 from beam_interactive import start
 
 class TestConnection(AsyncTestCase):
 
-    @run_until_complete
     def test_handshakes(self):
         conn = yield from start(self.echo, 42, 'asdf', loop=self.loop)
 

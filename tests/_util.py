@@ -1,20 +1,8 @@
 import unittest
 import asyncio
 import websockets
+from websockets.exceptions import ConnectionClosed
 from functools import wraps
-
-
-def run_until_complete(fun):
-    if not asyncio.iscoroutinefunction(fun):
-        fun = asyncio.coroutine(fun)
-
-    @wraps(fun)
-    def wrapper(test, *args, **kw):
-        loop = test.loop
-        ret = loop.run_until_complete(
-            asyncio.wait_for(fun(test, *args, **kw), 5, loop=loop))
-        return ret
-    return wrapper
 
 
 class EchoServer():
@@ -48,7 +36,7 @@ class AsyncTestCase(unittest.TestCase):
         self.loop = asyncio.new_event_loop()
         self.server = None
         asyncio.set_event_loop(None)
-        self.echo = self.make_echo_server()
+        self.echo = yield from self.make_echo_server()
 
     def tearDown(self):
         if self.server is not None:
@@ -57,6 +45,7 @@ class AsyncTestCase(unittest.TestCase):
         self.loop.close()
         del self.loop
 
+    @asyncio.coroutine
     def make_echo_server(self):
         """
         Creates and returns the 'wss://host:port' of a basic websocket echo
@@ -64,6 +53,6 @@ class AsyncTestCase(unittest.TestCase):
         """
         addr = ('127.0.0.1', 8888)
         self.server = EchoServer(self.loop, addr[0], addr[1])
-        self.loop.run_until_complete(self.server.start())
+        yield from self.loop.run_until_complete(self.server.start())
 
         return 'ws://%s:%s' % addr
