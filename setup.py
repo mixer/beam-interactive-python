@@ -1,7 +1,7 @@
 import sys
 from setuptools import setup, find_packages
 
-depends = ['protobuf']
+depends = ['protobuf', 'websockets']
 if sys.version_info >= (3, 5):
     pass
 elif sys.version_info >= (3, 3):
@@ -12,7 +12,7 @@ else:
 
 setup(
     name='beam_interactive',
-    version='0.0.1',
+    version='0.1.0',
     description=('reference Robot implementation for Beam Interactive'),
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',

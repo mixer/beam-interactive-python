@@ -1,8 +1,10 @@
 import unittest
 import random
+
 from beam_interactive.proto.identifier import identifier
 from beam_interactive.proto.tetris_pb2 import Handshake, Error
-from beam_interactive.proto.rw import Reader, Writer
+from beam_interactive.proto.rw import encode, decode
+from beam_interactive.exceptions import EncoderException, DecoderException
 
 class Foo():
     pass
@@ -29,56 +31,22 @@ class TestIdentifierProto(unittest.TestCase):
             identifier.handshake_ackasdf
 
 
-class TestRw(unittest.TestCase):
+class TestCoders(unittest.TestCase):
 
-    def test_reads_packets(self):
-        data = read('hundred_packets')
-        reader = Reader()
+    def test_decodes(self):
+        data = decode(read('a_packet'))
+        self.assertIsInstance(data, Error)
+        self.assertEqual('msg0', data.message)
 
-        pos = 0
-        msg = 0
-        while pos < len(data):
-            read_bytes = random.randint(0, 10)
-            reader.push(data[pos:pos+read_bytes])
-            pos += read_bytes
+    def test_decode_throws_on_incomplete(self):
+        with self.assertRaises(DecoderException): decode([0xf3])
+        with self.assertRaises(DecoderException): decode([])
 
-            for packet in reader:
-                decoded, byte = packet
-                self.assertEqual('msg%d' % msg, decoded.message)
-                msg += 1
+    def test_encode(self):
+        err = Error()
+        err.message = 'msg0'
+        self.assertEqual(read('a_packet'), encode(err))
 
-    def test_writes_packets(self):
-        expected = read('hundred_packets')
-        writer = Writer()
-        actual = b''
-
-        for x in range(0, 100):
-            err = Error()
-            err.message = 'msg%d' % x
-            writer.push(err)
-
-            if random.random() < 0.2:
-                actual += writer.read()
-
-        actual += writer.read()
-
-        self.assertEqual(expected, actual)
-
-    def test_goes_both_ways(self):
-        # the point of this is basically just to pick up any slight
-        # deviations between the Reader/Writer. They should be
-        # perfectly "symmetrical", or there is an error somewhere.
-
-        reader = Reader()
-        writer = Writer()
-
-        for x in range(0, 100):
-            err = Error()
-            err.message = 'msg%d' % x
-            writer.push(err)
-            reader.push(writer.read())
-
-        for x in range(0, 100):
-            packet, data = reader.read()
-            self.assertEqual('msg%d' % x, packet.message)
+    def test_encode_throws_on_invalid(self):
+        with self.assertRaises(EncoderException): encode(Foo())
 

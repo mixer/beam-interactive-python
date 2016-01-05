@@ -1,10 +1,9 @@
-from ._util import AsyncTestCase, run_until_complete
+from ._util import AsyncTestCase
 from beam_interactive.proto import Error
 from beam_interactive import start
 
 class TestConnection(AsyncTestCase):
 
-    @run_until_complete
     def test_handshakes(self):
         conn = yield from start(self.echo, 42, 'asdf', loop=self.loop)
 
@@ -18,8 +17,7 @@ class TestConnection(AsyncTestCase):
 
         err = Error()
         err.message = 'foo'
-        conn.send(err)
-
+        yield from conn.send(err)
         self.assertTrue((yield from conn.wait_message()))
         decoded, bytes = conn.get_packet()
         self.assertEqual('foo', err.message)
@@ -29,3 +27,4 @@ class TestConnection(AsyncTestCase):
         self.assertFalse((yield from conn.wait_message()))
         self.assertFalse(conn.open)
         self.assertTrue(conn.closed)
+
