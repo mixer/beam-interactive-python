@@ -18,8 +18,7 @@ class TestConnection(AsyncTestCase):
 
         err = Error()
         err.message = 'foo'
-        conn.send(err)
-
+        yield from conn.send(err)
         self.assertTrue((yield from conn.wait_message()))
         decoded, bytes = conn.get_packet()
         self.assertEqual('foo', err.message)
@@ -29,3 +28,4 @@ class TestConnection(AsyncTestCase):
         self.assertFalse((yield from conn.wait_message()))
         self.assertFalse(conn.open)
         self.assertTrue(conn.closed)
+

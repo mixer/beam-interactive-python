@@ -1,4 +1,5 @@
 import asyncio
+import websockets
 from .connection import Connection
 from .proto import Handshake
 
@@ -16,16 +17,10 @@ def start(address, channel, key, loop=None):
     if loop is None:
         loop = asyncio.get_event_loop()
 
-    if isinstance(address, str):
-        host, port = address.split(':')
-    else:
-        host, port = address
+    socket = yield from websockets.connect(address+"/robot", loop=loop)
 
-    reader, writer = yield from asyncio.open_connection(
-        host, port, loop=loop)
-
-    conn = Connection(reader, writer, loop)
-    conn.send(_create_handshake(channel, key))
+    conn = Connection(socket, loop)
+    yield from conn.send(_create_handshake(channel, key))
 
     return conn
 
