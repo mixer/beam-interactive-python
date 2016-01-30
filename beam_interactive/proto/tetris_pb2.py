@@ -18,7 +18,8 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='tetris.proto',
   package='tetris',
-  serialized_pb=_b('\n\x0ctetris.proto\x12\x06tetris\"/\n\tHandshake\x12\x0f\n\x07\x63hannel\x18\x01 \x02(\r\x12\x11\n\tstreamKey\x18\x02 \x02(\t\"\x0e\n\x0cHandshakeACK\"\xdd\x05\n\x06Report\x12\x0c\n\x04time\x18\x01 \x02(\r\x12#\n\x05users\x18\x02 \x02(\x0b\x32\x14.tetris.Report.Users\x12-\n\x08joystick\x18\x03 \x03(\x0b\x32\x1b.tetris.Report.JoystickInfo\x12+\n\x07tactile\x18\x04 \x03(\x0b\x32\x1a.tetris.Report.TactileInfo\x12\x35\n\x0cscreenCoords\x18\x05 \x03(\x0b\x32\x1f.tetris.Report.ScreenCoordsInfo\x12\x33\n\x0bscreenPress\x18\x06 \x03(\x0b\x32\x1e.tetris.Report.ScreenPressInfo\x1a*\n\x05Users\x12\x11\n\tconnected\x18\x01 \x02(\r\x12\x0e\n\x06quorum\x18\x02 \x02(\r\x1a\xa4\x01\n\x0cJoystickInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x33\n\tcoordMean\x18\x02 \x01(\x0b\x32 .tetris.Report.JoystickInfo.Data\x12\x35\n\x0b\x63oordStddev\x18\x03 \x01(\x0b\x32 .tetris.Report.JoystickInfo.Data\x1a\x1c\n\x04\x44\x61ta\x12\t\n\x01X\x18\x01 \x02(\x01\x12\t\n\x01Y\x18\x02 \x02(\x01\x1a\\\n\x0bTactileInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x0f\n\x07holding\x18\x02 \x01(\x01\x12\x16\n\x0epressFrequency\x18\x03 \x01(\x01\x12\x18\n\x10releaseFrequency\x18\x04 \x01(\x01\x1a\x45\n\x10ScreenCoordsInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x11\n\tcoordMean\x18\x02 \x01(\x01\x12\x12\n\ncoordStdev\x18\x03 \x01(\x01\x1a`\n\x0fScreenPressInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x0f\n\x07holding\x18\x02 \x01(\x01\x12\x16\n\x0epressFrequency\x18\x03 \x01(\x01\x12\x18\n\x10releaseFrequency\x18\x04 \x01(\x01\"\x18\n\x05\x45rror\x12\x0f\n\x07message\x18\x01 \x02(\t\"\x9f\x02\n\x0eProgressUpdate\x12\r\n\x05state\x18\x03 \x01(\t\x12\x37\n\x08joystick\x18\x01 \x03(\x0b\x32%.tetris.ProgressUpdate.JoystickUpdate\x12\x35\n\x07tactile\x18\x02 \x03(\x0b\x32$.tetris.ProgressUpdate.TactileUpdate\x1a>\n\x0eJoystickUpdate\x12\n\n\x02id\x18\x01 \x02(\r\x12\r\n\x05\x61ngle\x18\x02 \x01(\x01\x12\x11\n\tintensity\x18\x03 \x01(\x01\x1aN\n\rTactileUpdate\x12\n\n\x02id\x18\x01 \x02(\r\x12\x10\n\x08\x63ooldown\x18\x02 \x01(\r\x12\r\n\x05\x66ired\x18\x03 \x01(\x08\x12\x10\n\x08progress\x18\x04 \x01(\x01')
+  syntax='proto2',
+  serialized_pb=_b('\n\x0ctetris.proto\x12\x06tetris\"/\n\tHandshake\x12\x0f\n\x07\x63hannel\x18\x01 \x02(\r\x12\x11\n\tstreamKey\x18\x02 \x02(\t\"\x0e\n\x0cHandshakeACK\"\xc0\x06\n\x06Report\x12\x0c\n\x04time\x18\x01 \x02(\r\x12#\n\x05users\x18\x02 \x02(\x0b\x32\x14.tetris.Report.Users\x12-\n\x08joystick\x18\x03 \x03(\x0b\x32\x1b.tetris.Report.JoystickInfo\x12+\n\x07tactile\x18\x04 \x03(\x0b\x32\x1a.tetris.Report.TactileInfo\x12\x35\n\x0cscreenCoords\x18\x05 \x03(\x0b\x32\x1f.tetris.Report.ScreenCoordsInfo\x12\x33\n\x0bscreenPress\x18\x06 \x03(\x0b\x32\x1e.tetris.Report.ScreenPressInfo\x1a\x8c\x01\n\x05Users\x12\x11\n\tconnected\x18\x01 \x02(\r\x12\x0e\n\x06quorum\x18\x02 \x02(\r\x12\x0e\n\x06\x61\x63tive\x18\x03 \x02(\r\x12)\n\x05qgram\x18\x04 \x03(\x0b\x32\x1a.tetris.Report.Users.QGram\x1a%\n\x05QGram\x12\r\n\x05\x64\x65lta\x18\x01 \x02(\r\x12\r\n\x05users\x18\x02 \x02(\r\x1a\xa4\x01\n\x0cJoystickInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x33\n\tcoordMean\x18\x02 \x01(\x0b\x32 .tetris.Report.JoystickInfo.Data\x12\x35\n\x0b\x63oordStddev\x18\x03 \x01(\x0b\x32 .tetris.Report.JoystickInfo.Data\x1a\x1c\n\x04\x44\x61ta\x12\t\n\x01X\x18\x01 \x02(\x01\x12\t\n\x01Y\x18\x02 \x02(\x01\x1a\\\n\x0bTactileInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x0f\n\x07holding\x18\x02 \x01(\x01\x12\x16\n\x0epressFrequency\x18\x03 \x01(\x01\x12\x18\n\x10releaseFrequency\x18\x04 \x01(\x01\x1a\x45\n\x10ScreenCoordsInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x11\n\tcoordMean\x18\x02 \x01(\x01\x12\x12\n\ncoordStdev\x18\x03 \x01(\x01\x1a`\n\x0fScreenPressInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x0f\n\x07holding\x18\x02 \x01(\x01\x12\x16\n\x0epressFrequency\x18\x03 \x01(\x01\x12\x18\n\x10releaseFrequency\x18\x04 \x01(\x01\"\x18\n\x05\x45rror\x12\x0f\n\x07message\x18\x01 \x02(\t\"\x9f\x02\n\x0eProgressUpdate\x12\r\n\x05state\x18\x03 \x01(\t\x12\x37\n\x08joystick\x18\x01 \x03(\x0b\x32%.tetris.ProgressUpdate.JoystickUpdate\x12\x35\n\x07tactile\x18\x02 \x03(\x0b\x32$.tetris.ProgressUpdate.TactileUpdate\x1a>\n\x0eJoystickUpdate\x12\n\n\x02id\x18\x01 \x02(\r\x12\r\n\x05\x61ngle\x18\x02 \x01(\x01\x12\x11\n\tintensity\x18\x03 \x01(\x01\x1aN\n\rTactileUpdate\x12\n\n\x02id\x18\x01 \x02(\r\x12\x10\n\x08\x63ooldown\x18\x02 \x01(\r\x12\r\n\x05\x66ired\x18\x03 \x01(\x08\x12\x10\n\x08progress\x18\x04 \x01(\x01')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -54,6 +55,7 @@ _HANDSHAKE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -77,6 +79,7 @@ _HANDSHAKEACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -84,6 +87,43 @@ _HANDSHAKEACK = _descriptor.Descriptor(
   serialized_end=87,
 )
 
+
+_REPORT_USERS_QGRAM = _descriptor.Descriptor(
+  name='QGram',
+  full_name='tetris.Report.Users.QGram',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='delta', full_name='tetris.Report.Users.QGram.delta', index=0,
+      number=1, type=13, cpp_type=3, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='users', full_name='tetris.Report.Users.QGram.users', index=1,
+      number=2, type=13, cpp_type=3, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=455,
+  serialized_end=492,
+)
 
 _REPORT_USERS = _descriptor.Descriptor(
   name='Users',
@@ -106,19 +146,34 @@ _REPORT_USERS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='active', full_name='tetris.Report.Users.active', index=2,
+      number=3, type=13, cpp_type=3, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='qgram', full_name='tetris.Report.Users.qgram', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_REPORT_USERS_QGRAM, ],
   enum_types=[
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=351,
-  serialized_end=393,
+  serialized_start=352,
+  serialized_end=492,
 )
 
 _REPORT_JOYSTICKINFO_DATA = _descriptor.Descriptor(
@@ -150,11 +205,12 @@ _REPORT_JOYSTICKINFO_DATA = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=532,
-  serialized_end=560,
+  serialized_start=631,
+  serialized_end=659,
 )
 
 _REPORT_JOYSTICKINFO = _descriptor.Descriptor(
@@ -193,11 +249,12 @@ _REPORT_JOYSTICKINFO = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=396,
-  serialized_end=560,
+  serialized_start=495,
+  serialized_end=659,
 )
 
 _REPORT_TACTILEINFO = _descriptor.Descriptor(
@@ -243,11 +300,12 @@ _REPORT_TACTILEINFO = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=562,
-  serialized_end=654,
+  serialized_start=661,
+  serialized_end=753,
 )
 
 _REPORT_SCREENCOORDSINFO = _descriptor.Descriptor(
@@ -286,11 +344,12 @@ _REPORT_SCREENCOORDSINFO = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=656,
-  serialized_end=725,
+  serialized_start=755,
+  serialized_end=824,
 )
 
 _REPORT_SCREENPRESSINFO = _descriptor.Descriptor(
@@ -336,11 +395,12 @@ _REPORT_SCREENPRESSINFO = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=727,
-  serialized_end=823,
+  serialized_start=826,
+  serialized_end=922,
 )
 
 _REPORT = _descriptor.Descriptor(
@@ -400,11 +460,12 @@ _REPORT = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=90,
-  serialized_end=823,
+  serialized_end=922,
 )
 
 
@@ -430,11 +491,12 @@ _ERROR = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=825,
-  serialized_end=849,
+  serialized_start=924,
+  serialized_end=948,
 )
 
 
@@ -474,11 +536,12 @@ _PROGRESSUPDATE_JOYSTICKUPDATE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=997,
-  serialized_end=1059,
+  serialized_start=1096,
+  serialized_end=1158,
 )
 
 _PROGRESSUPDATE_TACTILEUPDATE = _descriptor.Descriptor(
@@ -524,11 +587,12 @@ _PROGRESSUPDATE_TACTILEUPDATE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1061,
-  serialized_end=1139,
+  serialized_start=1160,
+  serialized_end=1238,
 )
 
 _PROGRESSUPDATE = _descriptor.Descriptor(
@@ -567,13 +631,16 @@ _PROGRESSUPDATE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=852,
-  serialized_end=1139,
+  serialized_start=951,
+  serialized_end=1238,
 )
 
+_REPORT_USERS_QGRAM.containing_type = _REPORT_USERS
+_REPORT_USERS.fields_by_name['qgram'].message_type = _REPORT_USERS_QGRAM
 _REPORT_USERS.containing_type = _REPORT
 _REPORT_JOYSTICKINFO_DATA.containing_type = _REPORT_JOYSTICKINFO
 _REPORT_JOYSTICKINFO.fields_by_name['coordMean'].message_type = _REPORT_JOYSTICKINFO_DATA
@@ -614,6 +681,13 @@ _sym_db.RegisterMessage(HandshakeACK)
 Report = _reflection.GeneratedProtocolMessageType('Report', (_message.Message,), dict(
 
   Users = _reflection.GeneratedProtocolMessageType('Users', (_message.Message,), dict(
+
+    QGram = _reflection.GeneratedProtocolMessageType('QGram', (_message.Message,), dict(
+      DESCRIPTOR = _REPORT_USERS_QGRAM,
+      __module__ = 'tetris_pb2'
+      # @@protoc_insertion_point(class_scope:tetris.Report.Users.QGram)
+      ))
+    ,
     DESCRIPTOR = _REPORT_USERS,
     __module__ = 'tetris_pb2'
     # @@protoc_insertion_point(class_scope:tetris.Report.Users)
@@ -660,6 +734,7 @@ Report = _reflection.GeneratedProtocolMessageType('Report', (_message.Message,),
   ))
 _sym_db.RegisterMessage(Report)
 _sym_db.RegisterMessage(Report.Users)
+_sym_db.RegisterMessage(Report.Users.QGram)
 _sym_db.RegisterMessage(Report.JoystickInfo)
 _sym_db.RegisterMessage(Report.JoystickInfo.Data)
 _sym_db.RegisterMessage(Report.TactileInfo)

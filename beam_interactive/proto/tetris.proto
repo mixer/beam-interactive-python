@@ -1,3 +1,5 @@
+syntax = 'proto2';
+
 package tetris;
 
 // Handshake MUST be the first message sent from clients to servers.
@@ -30,6 +32,18 @@ message Report {
         // Number of users who gave any kind of input in the last
         // 30 seconds.
         required uint32 quorum = 2;
+        // Number of users who gave input in *this* report interval.
+        required uint32 active = 3;
+
+        // User activity is reported in a histographic fashion via a
+        // sequence of QGrams, which record the number of users who gave
+        // any sort of input in the last (now - delta) milliseconds.
+        message QGram {
+            required uint32 delta = 1;
+            required uint32 users = 2;
+        }
+
+        repeated QGram qgram = 4;
     }
 
     // Reports for the Joystick input type.
