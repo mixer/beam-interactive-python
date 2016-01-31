@@ -1,7 +1,7 @@
 import sys
 from setuptools import setup, find_packages
 
-depends = ['protobuf', 'websockets']
+depends = ['protobuf>=3.0.0b2', 'websockets>=3.0']
 if sys.version_info >= (3, 5):
     pass
 elif sys.version_info >= (3, 3):
