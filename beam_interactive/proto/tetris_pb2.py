@@ -18,7 +18,6 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='tetris.proto',
   package='tetris',
-  syntax='proto2',
   serialized_pb=_b('\n\x0ctetris.proto\x12\x06tetris\"/\n\tHandshake\x12\x0f\n\x07\x63hannel\x18\x01 \x02(\r\x12\x11\n\tstreamKey\x18\x02 \x02(\t\"\x0e\n\x0cHandshakeACK\"\xc0\x06\n\x06Report\x12\x0c\n\x04time\x18\x01 \x02(\r\x12#\n\x05users\x18\x02 \x02(\x0b\x32\x14.tetris.Report.Users\x12-\n\x08joystick\x18\x03 \x03(\x0b\x32\x1b.tetris.Report.JoystickInfo\x12+\n\x07tactile\x18\x04 \x03(\x0b\x32\x1a.tetris.Report.TactileInfo\x12\x35\n\x0cscreenCoords\x18\x05 \x03(\x0b\x32\x1f.tetris.Report.ScreenCoordsInfo\x12\x33\n\x0bscreenPress\x18\x06 \x03(\x0b\x32\x1e.tetris.Report.ScreenPressInfo\x1a\x8c\x01\n\x05Users\x12\x11\n\tconnected\x18\x01 \x02(\r\x12\x0e\n\x06quorum\x18\x02 \x02(\r\x12\x0e\n\x06\x61\x63tive\x18\x03 \x02(\r\x12)\n\x05qgram\x18\x04 \x03(\x0b\x32\x1a.tetris.Report.Users.QGram\x1a%\n\x05QGram\x12\r\n\x05\x64\x65lta\x18\x01 \x02(\r\x12\r\n\x05users\x18\x02 \x02(\r\x1a\xa4\x01\n\x0cJoystickInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x33\n\tcoordMean\x18\x02 \x01(\x0b\x32 .tetris.Report.JoystickInfo.Data\x12\x35\n\x0b\x63oordStddev\x18\x03 \x01(\x0b\x32 .tetris.Report.JoystickInfo.Data\x1a\x1c\n\x04\x44\x61ta\x12\t\n\x01X\x18\x01 \x02(\x01\x12\t\n\x01Y\x18\x02 \x02(\x01\x1a\\\n\x0bTactileInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x0f\n\x07holding\x18\x02 \x01(\x01\x12\x16\n\x0epressFrequency\x18\x03 \x01(\x01\x12\x18\n\x10releaseFrequency\x18\x04 \x01(\x01\x1a\x45\n\x10ScreenCoordsInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x11\n\tcoordMean\x18\x02 \x01(\x01\x12\x12\n\ncoordStdev\x18\x03 \x01(\x01\x1a`\n\x0fScreenPressInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x0f\n\x07holding\x18\x02 \x01(\x01\x12\x16\n\x0epressFrequency\x18\x03 \x01(\x01\x12\x18\n\x10releaseFrequency\x18\x04 \x01(\x01\"\x18\n\x05\x45rror\x12\x0f\n\x07message\x18\x01 \x02(\t\"\x9f\x02\n\x0eProgressUpdate\x12\r\n\x05state\x18\x03 \x01(\t\x12\x37\n\x08joystick\x18\x01 \x03(\x0b\x32%.tetris.ProgressUpdate.JoystickUpdate\x12\x35\n\x07tactile\x18\x02 \x03(\x0b\x32$.tetris.ProgressUpdate.TactileUpdate\x1a>\n\x0eJoystickUpdate\x12\n\n\x02id\x18\x01 \x02(\r\x12\r\n\x05\x61ngle\x18\x02 \x01(\x01\x12\x11\n\tintensity\x18\x03 \x01(\x01\x1aN\n\rTactileUpdate\x12\n\n\x02id\x18\x01 \x02(\r\x12\x10\n\x08\x63ooldown\x18\x02 \x01(\r\x12\r\n\x05\x66ired\x18\x03 \x01(\x08\x12\x10\n\x08progress\x18\x04 \x01(\x01')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -55,7 +54,6 @@ _HANDSHAKE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -79,7 +77,6 @@ _HANDSHAKEACK = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -117,7 +114,6 @@ _REPORT_USERS_QGRAM = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -168,7 +164,6 @@ _REPORT_USERS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -205,7 +200,6 @@ _REPORT_JOYSTICKINFO_DATA = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -249,7 +243,6 @@ _REPORT_JOYSTICKINFO = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -300,7 +293,6 @@ _REPORT_TACTILEINFO = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -344,7 +336,6 @@ _REPORT_SCREENCOORDSINFO = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -395,7 +386,6 @@ _REPORT_SCREENPRESSINFO = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -460,7 +450,6 @@ _REPORT = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -491,7 +480,6 @@ _ERROR = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -536,7 +524,6 @@ _PROGRESSUPDATE_JOYSTICKUPDATE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -587,7 +574,6 @@ _PROGRESSUPDATE_TACTILEUPDATE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -631,7 +617,6 @@ _PROGRESSUPDATE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],

@@ -1,5 +1,3 @@
-syntax = 'proto2';
-
 package tetris;
 
 // Handshake MUST be the first message sent from clients to servers.
