@@ -12,7 +12,7 @@ else:
 
 setup(
     name='beam_interactive',
-    version='0.2.1',
+    version='0.3.0',
     description=('reference Robot implementation for Beam Interactive'),
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
