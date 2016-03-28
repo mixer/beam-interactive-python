@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='tetris.proto',
   package='tetris',
-  serialized_pb=_b('\n\x0ctetris.proto\x12\x06tetris\"/\n\tHandshake\x12\x0f\n\x07\x63hannel\x18\x01 \x02(\r\x12\x11\n\tstreamKey\x18\x02 \x02(\t\"\x0e\n\x0cHandshakeACK\"\xc0\x06\n\x06Report\x12\x0c\n\x04time\x18\x01 \x02(\r\x12#\n\x05users\x18\x02 \x02(\x0b\x32\x14.tetris.Report.Users\x12-\n\x08joystick\x18\x03 \x03(\x0b\x32\x1b.tetris.Report.JoystickInfo\x12+\n\x07tactile\x18\x04 \x03(\x0b\x32\x1a.tetris.Report.TactileInfo\x12\x35\n\x0cscreenCoords\x18\x05 \x03(\x0b\x32\x1f.tetris.Report.ScreenCoordsInfo\x12\x33\n\x0bscreenPress\x18\x06 \x03(\x0b\x32\x1e.tetris.Report.ScreenPressInfo\x1a\x8c\x01\n\x05Users\x12\x11\n\tconnected\x18\x01 \x02(\r\x12\x0e\n\x06quorum\x18\x02 \x02(\r\x12\x0e\n\x06\x61\x63tive\x18\x03 \x02(\r\x12)\n\x05qgram\x18\x04 \x03(\x0b\x32\x1a.tetris.Report.Users.QGram\x1a%\n\x05QGram\x12\r\n\x05\x64\x65lta\x18\x01 \x02(\r\x12\r\n\x05users\x18\x02 \x02(\r\x1a\xa4\x01\n\x0cJoystickInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x33\n\tcoordMean\x18\x02 \x01(\x0b\x32 .tetris.Report.JoystickInfo.Data\x12\x35\n\x0b\x63oordStddev\x18\x03 \x01(\x0b\x32 .tetris.Report.JoystickInfo.Data\x1a\x1c\n\x04\x44\x61ta\x12\t\n\x01X\x18\x01 \x02(\x01\x12\t\n\x01Y\x18\x02 \x02(\x01\x1a\\\n\x0bTactileInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x0f\n\x07holding\x18\x02 \x01(\x01\x12\x16\n\x0epressFrequency\x18\x03 \x01(\x01\x12\x18\n\x10releaseFrequency\x18\x04 \x01(\x01\x1a\x45\n\x10ScreenCoordsInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x11\n\tcoordMean\x18\x02 \x01(\x01\x12\x12\n\ncoordStdev\x18\x03 \x01(\x01\x1a`\n\x0fScreenPressInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x0f\n\x07holding\x18\x02 \x01(\x01\x12\x16\n\x0epressFrequency\x18\x03 \x01(\x01\x12\x18\n\x10releaseFrequency\x18\x04 \x01(\x01\"\x18\n\x05\x45rror\x12\x0f\n\x07message\x18\x01 \x02(\t\"\x9f\x02\n\x0eProgressUpdate\x12\r\n\x05state\x18\x03 \x01(\t\x12\x37\n\x08joystick\x18\x01 \x03(\x0b\x32%.tetris.ProgressUpdate.JoystickUpdate\x12\x35\n\x07tactile\x18\x02 \x03(\x0b\x32$.tetris.ProgressUpdate.TactileUpdate\x1a>\n\x0eJoystickUpdate\x12\n\n\x02id\x18\x01 \x02(\r\x12\r\n\x05\x61ngle\x18\x02 \x01(\x01\x12\x11\n\tintensity\x18\x03 \x01(\x01\x1aN\n\rTactileUpdate\x12\n\n\x02id\x18\x01 \x02(\r\x12\x10\n\x08\x63ooldown\x18\x02 \x01(\r\x12\r\n\x05\x66ired\x18\x03 \x01(\x08\x12\x10\n\x08progress\x18\x04 \x01(\x01')
+  serialized_pb=_b('\n\x0ctetris.proto\x12\x06tetris\"/\n\tHandshake\x12\x0f\n\x07\x63hannel\x18\x01 \x02(\r\x12\x11\n\tstreamKey\x18\x02 \x02(\t\"\x0e\n\x0cHandshakeACK\"\xea\x04\n\x06Report\x12\x0c\n\x04time\x18\x01 \x02(\r\x12#\n\x05users\x18\x02 \x02(\x0b\x32\x14.tetris.Report.Users\x12-\n\x08joystick\x18\x03 \x03(\x0b\x32\x1b.tetris.Report.JoystickInfo\x12+\n\x07tactile\x18\x04 \x03(\x0b\x32\x1a.tetris.Report.TactileInfo\x12)\n\x06screen\x18\x05 \x03(\x0b\x32\x19.tetris.Report.ScreenInfo\x1a\x62\n\x05Users\x12\x11\n\tconnected\x18\x01 \x02(\r\x12\x0e\n\x06quorum\x18\x02 \x02(\r\x12\x0e\n\x06\x61\x63tive\x18\x03 \x02(\r\x12&\n\x05qgram\x18\x04 \x03(\x0b\x32\x17.tetris.HistogramUint1D\x1aj\n\x0cJoystickInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12%\n\tcoordMean\x18\x02 \x01(\x0b\x32\x12.tetris.Coordinate\x12\'\n\x0b\x63oordStddev\x18\x03 \x01(\x0b\x32\x12.tetris.Coordinate\x1a\\\n\x0bTactileInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x0f\n\x07holding\x18\x02 \x01(\x01\x12\x16\n\x0epressFrequency\x18\x03 \x01(\x01\x12\x18\n\x10releaseFrequency\x18\x04 \x01(\x01\x1ax\n\nScreenInfo\x12\n\n\x02id\x18\x01 \x02(\r\x12\x0e\n\x06\x63licks\x18\x02 \x01(\x01\x12%\n\tcoordMean\x18\x03 \x01(\x0b\x32\x12.tetris.Coordinate\x12\'\n\x0b\x63oordStddev\x18\x04 \x01(\x0b\x32\x12.tetris.Coordinate\"\x18\n\x05\x45rror\x12\x0f\n\x07message\x18\x01 \x02(\t\"\xa6\x04\n\x0eProgressUpdate\x12\r\n\x05state\x18\x03 \x01(\t\x12\x37\n\x08joystick\x18\x01 \x03(\x0b\x32%.tetris.ProgressUpdate.JoystickUpdate\x12\x35\n\x07tactile\x18\x02 \x03(\x0b\x32$.tetris.ProgressUpdate.TactileUpdate\x12\x33\n\x06screen\x18\x04 \x03(\x0b\x32#.tetris.ProgressUpdate.ScreenUpdate\x1aP\n\x0eJoystickUpdate\x12\n\n\x02id\x18\x01 \x02(\r\x12\r\n\x05\x61ngle\x18\x02 \x01(\x01\x12\x11\n\tintensity\x18\x03 \x01(\x01\x12\x10\n\x08\x64isabled\x18\x04 \x01(\x08\x1a`\n\rTactileUpdate\x12\n\n\x02id\x18\x01 \x02(\r\x12\x10\n\x08\x63ooldown\x18\x02 \x01(\r\x12\r\n\x05\x66ired\x18\x03 \x01(\x08\x12\x10\n\x08progress\x18\x04 \x01(\x01\x12\x10\n\x08\x64isabled\x18\x05 \x01(\x08\x1a\xab\x01\n\x0cScreenUpdate\x12\n\n\x02id\x18\x01 \x02(\r\x12\x39\n\x06\x63licks\x18\x02 \x03(\x0b\x32).tetris.ProgressUpdate.ScreenUpdate.Click\x12\x10\n\x08\x64isabled\x18\x03 \x01(\x08\x1a\x42\n\x05\x43lick\x12&\n\ncoordinate\x18\x01 \x02(\x0b\x32\x12.tetris.Coordinate\x12\x11\n\tintensity\x18\x02 \x02(\x01\"\'\n\x0fHistogramUint1D\x12\t\n\x01x\x18\x01 \x02(\r\x12\t\n\x01y\x18\x02 \x02(\r\"\"\n\nCoordinate\x12\t\n\x01x\x18\x01 \x02(\x01\x12\t\n\x01y\x18\x02 \x02(\x01')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -85,42 +85,6 @@ _HANDSHAKEACK = _descriptor.Descriptor(
 )
 
 
-_REPORT_USERS_QGRAM = _descriptor.Descriptor(
-  name='QGram',
-  full_name='tetris.Report.Users.QGram',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='delta', full_name='tetris.Report.Users.QGram.delta', index=0,
-      number=1, type=13, cpp_type=3, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='users', full_name='tetris.Report.Users.QGram.users', index=1,
-      number=2, type=13, cpp_type=3, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=455,
-  serialized_end=492,
-)
-
 _REPORT_USERS = _descriptor.Descriptor(
   name='Users',
   full_name='tetris.Report.Users',
@@ -159,42 +123,6 @@ _REPORT_USERS = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_REPORT_USERS_QGRAM, ],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=352,
-  serialized_end=492,
-)
-
-_REPORT_JOYSTICKINFO_DATA = _descriptor.Descriptor(
-  name='Data',
-  full_name='tetris.Report.JoystickInfo.Data',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='X', full_name='tetris.Report.JoystickInfo.Data.X', index=0,
-      number=1, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Y', full_name='tetris.Report.JoystickInfo.Data.Y', index=1,
-      number=2, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
   nested_types=[],
   enum_types=[
   ],
@@ -203,8 +131,8 @@ _REPORT_JOYSTICKINFO_DATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=631,
-  serialized_end=659,
+  serialized_start=286,
+  serialized_end=384,
 )
 
 _REPORT_JOYSTICKINFO = _descriptor.Descriptor(
@@ -238,7 +166,7 @@ _REPORT_JOYSTICKINFO = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_REPORT_JOYSTICKINFO_DATA, ],
+  nested_types=[],
   enum_types=[
   ],
   options=None,
@@ -246,8 +174,8 @@ _REPORT_JOYSTICKINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=495,
-  serialized_end=659,
+  serialized_start=386,
+  serialized_end=492,
 )
 
 _REPORT_TACTILEINFO = _descriptor.Descriptor(
@@ -296,35 +224,42 @@ _REPORT_TACTILEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=661,
-  serialized_end=753,
+  serialized_start=494,
+  serialized_end=586,
 )
 
-_REPORT_SCREENCOORDSINFO = _descriptor.Descriptor(
-  name='ScreenCoordsInfo',
-  full_name='tetris.Report.ScreenCoordsInfo',
+_REPORT_SCREENINFO = _descriptor.Descriptor(
+  name='ScreenInfo',
+  full_name='tetris.Report.ScreenInfo',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='tetris.Report.ScreenCoordsInfo.id', index=0,
+      name='id', full_name='tetris.Report.ScreenInfo.id', index=0,
       number=1, type=13, cpp_type=3, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='coordMean', full_name='tetris.Report.ScreenCoordsInfo.coordMean', index=1,
+      name='clicks', full_name='tetris.Report.ScreenInfo.clicks', index=1,
       number=2, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='coordStdev', full_name='tetris.Report.ScreenCoordsInfo.coordStdev', index=2,
-      number=3, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=0,
+      name='coordMean', full_name='tetris.Report.ScreenInfo.coordMean', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='coordStddev', full_name='tetris.Report.ScreenInfo.coordStddev', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -339,58 +274,8 @@ _REPORT_SCREENCOORDSINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=755,
-  serialized_end=824,
-)
-
-_REPORT_SCREENPRESSINFO = _descriptor.Descriptor(
-  name='ScreenPressInfo',
-  full_name='tetris.Report.ScreenPressInfo',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='id', full_name='tetris.Report.ScreenPressInfo.id', index=0,
-      number=1, type=13, cpp_type=3, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='holding', full_name='tetris.Report.ScreenPressInfo.holding', index=1,
-      number=2, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='pressFrequency', full_name='tetris.Report.ScreenPressInfo.pressFrequency', index=2,
-      number=3, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='releaseFrequency', full_name='tetris.Report.ScreenPressInfo.releaseFrequency', index=3,
-      number=4, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=826,
-  serialized_end=922,
+  serialized_start=588,
+  serialized_end=708,
 )
 
 _REPORT = _descriptor.Descriptor(
@@ -429,15 +314,8 @@ _REPORT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='screenCoords', full_name='tetris.Report.screenCoords', index=4,
+      name='screen', full_name='tetris.Report.screen', index=4,
       number=5, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='screenPress', full_name='tetris.Report.screenPress', index=5,
-      number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -445,7 +323,7 @@ _REPORT = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_REPORT_USERS, _REPORT_JOYSTICKINFO, _REPORT_TACTILEINFO, _REPORT_SCREENCOORDSINFO, _REPORT_SCREENPRESSINFO, ],
+  nested_types=[_REPORT_USERS, _REPORT_JOYSTICKINFO, _REPORT_TACTILEINFO, _REPORT_SCREENINFO, ],
   enum_types=[
   ],
   options=None,
@@ -454,7 +332,7 @@ _REPORT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=90,
-  serialized_end=922,
+  serialized_end=708,
 )
 
 
@@ -483,8 +361,8 @@ _ERROR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=924,
-  serialized_end=948,
+  serialized_start=710,
+  serialized_end=734,
 )
 
 
@@ -516,6 +394,13 @@ _PROGRESSUPDATE_JOYSTICKUPDATE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='disabled', full_name='tetris.ProgressUpdate.JoystickUpdate.disabled', index=3,
+      number=4, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -527,8 +412,8 @@ _PROGRESSUPDATE_JOYSTICKUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1096,
-  serialized_end=1158,
+  serialized_start=935,
+  serialized_end=1015,
 )
 
 _PROGRESSUPDATE_TACTILEUPDATE = _descriptor.Descriptor(
@@ -566,6 +451,13 @@ _PROGRESSUPDATE_TACTILEUPDATE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='disabled', full_name='tetris.ProgressUpdate.TactileUpdate.disabled', index=4,
+      number=5, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -577,8 +469,87 @@ _PROGRESSUPDATE_TACTILEUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1160,
-  serialized_end=1238,
+  serialized_start=1017,
+  serialized_end=1113,
+)
+
+_PROGRESSUPDATE_SCREENUPDATE_CLICK = _descriptor.Descriptor(
+  name='Click',
+  full_name='tetris.ProgressUpdate.ScreenUpdate.Click',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='coordinate', full_name='tetris.ProgressUpdate.ScreenUpdate.Click.coordinate', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='intensity', full_name='tetris.ProgressUpdate.ScreenUpdate.Click.intensity', index=1,
+      number=2, type=1, cpp_type=5, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1221,
+  serialized_end=1287,
+)
+
+_PROGRESSUPDATE_SCREENUPDATE = _descriptor.Descriptor(
+  name='ScreenUpdate',
+  full_name='tetris.ProgressUpdate.ScreenUpdate',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='tetris.ProgressUpdate.ScreenUpdate.id', index=0,
+      number=1, type=13, cpp_type=3, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='clicks', full_name='tetris.ProgressUpdate.ScreenUpdate.clicks', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='disabled', full_name='tetris.ProgressUpdate.ScreenUpdate.disabled', index=2,
+      number=3, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[_PROGRESSUPDATE_SCREENUPDATE_CLICK, ],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1116,
+  serialized_end=1287,
 )
 
 _PROGRESSUPDATE = _descriptor.Descriptor(
@@ -609,10 +580,17 @@ _PROGRESSUPDATE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='screen', full_name='tetris.ProgressUpdate.screen', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
-  nested_types=[_PROGRESSUPDATE_JOYSTICKUPDATE, _PROGRESSUPDATE_TACTILEUPDATE, ],
+  nested_types=[_PROGRESSUPDATE_JOYSTICKUPDATE, _PROGRESSUPDATE_TACTILEUPDATE, _PROGRESSUPDATE_SCREENUPDATE, ],
   enum_types=[
   ],
   options=None,
@@ -620,34 +598,113 @@ _PROGRESSUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=951,
-  serialized_end=1238,
+  serialized_start=737,
+  serialized_end=1287,
 )
 
-_REPORT_USERS_QGRAM.containing_type = _REPORT_USERS
-_REPORT_USERS.fields_by_name['qgram'].message_type = _REPORT_USERS_QGRAM
+
+_HISTOGRAMUINT1D = _descriptor.Descriptor(
+  name='HistogramUint1D',
+  full_name='tetris.HistogramUint1D',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='x', full_name='tetris.HistogramUint1D.x', index=0,
+      number=1, type=13, cpp_type=3, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='y', full_name='tetris.HistogramUint1D.y', index=1,
+      number=2, type=13, cpp_type=3, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1289,
+  serialized_end=1328,
+)
+
+
+_COORDINATE = _descriptor.Descriptor(
+  name='Coordinate',
+  full_name='tetris.Coordinate',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='x', full_name='tetris.Coordinate.x', index=0,
+      number=1, type=1, cpp_type=5, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='y', full_name='tetris.Coordinate.y', index=1,
+      number=2, type=1, cpp_type=5, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1330,
+  serialized_end=1364,
+)
+
+_REPORT_USERS.fields_by_name['qgram'].message_type = _HISTOGRAMUINT1D
 _REPORT_USERS.containing_type = _REPORT
-_REPORT_JOYSTICKINFO_DATA.containing_type = _REPORT_JOYSTICKINFO
-_REPORT_JOYSTICKINFO.fields_by_name['coordMean'].message_type = _REPORT_JOYSTICKINFO_DATA
-_REPORT_JOYSTICKINFO.fields_by_name['coordStddev'].message_type = _REPORT_JOYSTICKINFO_DATA
+_REPORT_JOYSTICKINFO.fields_by_name['coordMean'].message_type = _COORDINATE
+_REPORT_JOYSTICKINFO.fields_by_name['coordStddev'].message_type = _COORDINATE
 _REPORT_JOYSTICKINFO.containing_type = _REPORT
 _REPORT_TACTILEINFO.containing_type = _REPORT
-_REPORT_SCREENCOORDSINFO.containing_type = _REPORT
-_REPORT_SCREENPRESSINFO.containing_type = _REPORT
+_REPORT_SCREENINFO.fields_by_name['coordMean'].message_type = _COORDINATE
+_REPORT_SCREENINFO.fields_by_name['coordStddev'].message_type = _COORDINATE
+_REPORT_SCREENINFO.containing_type = _REPORT
 _REPORT.fields_by_name['users'].message_type = _REPORT_USERS
 _REPORT.fields_by_name['joystick'].message_type = _REPORT_JOYSTICKINFO
 _REPORT.fields_by_name['tactile'].message_type = _REPORT_TACTILEINFO
-_REPORT.fields_by_name['screenCoords'].message_type = _REPORT_SCREENCOORDSINFO
-_REPORT.fields_by_name['screenPress'].message_type = _REPORT_SCREENPRESSINFO
+_REPORT.fields_by_name['screen'].message_type = _REPORT_SCREENINFO
 _PROGRESSUPDATE_JOYSTICKUPDATE.containing_type = _PROGRESSUPDATE
 _PROGRESSUPDATE_TACTILEUPDATE.containing_type = _PROGRESSUPDATE
+_PROGRESSUPDATE_SCREENUPDATE_CLICK.fields_by_name['coordinate'].message_type = _COORDINATE
+_PROGRESSUPDATE_SCREENUPDATE_CLICK.containing_type = _PROGRESSUPDATE_SCREENUPDATE
+_PROGRESSUPDATE_SCREENUPDATE.fields_by_name['clicks'].message_type = _PROGRESSUPDATE_SCREENUPDATE_CLICK
+_PROGRESSUPDATE_SCREENUPDATE.containing_type = _PROGRESSUPDATE
 _PROGRESSUPDATE.fields_by_name['joystick'].message_type = _PROGRESSUPDATE_JOYSTICKUPDATE
 _PROGRESSUPDATE.fields_by_name['tactile'].message_type = _PROGRESSUPDATE_TACTILEUPDATE
+_PROGRESSUPDATE.fields_by_name['screen'].message_type = _PROGRESSUPDATE_SCREENUPDATE
 DESCRIPTOR.message_types_by_name['Handshake'] = _HANDSHAKE
 DESCRIPTOR.message_types_by_name['HandshakeACK'] = _HANDSHAKEACK
 DESCRIPTOR.message_types_by_name['Report'] = _REPORT
 DESCRIPTOR.message_types_by_name['Error'] = _ERROR
 DESCRIPTOR.message_types_by_name['ProgressUpdate'] = _PROGRESSUPDATE
+DESCRIPTOR.message_types_by_name['HistogramUint1D'] = _HISTOGRAMUINT1D
+DESCRIPTOR.message_types_by_name['Coordinate'] = _COORDINATE
 
 Handshake = _reflection.GeneratedProtocolMessageType('Handshake', (_message.Message,), dict(
   DESCRIPTOR = _HANDSHAKE,
@@ -666,13 +723,6 @@ _sym_db.RegisterMessage(HandshakeACK)
 Report = _reflection.GeneratedProtocolMessageType('Report', (_message.Message,), dict(
 
   Users = _reflection.GeneratedProtocolMessageType('Users', (_message.Message,), dict(
-
-    QGram = _reflection.GeneratedProtocolMessageType('QGram', (_message.Message,), dict(
-      DESCRIPTOR = _REPORT_USERS_QGRAM,
-      __module__ = 'tetris_pb2'
-      # @@protoc_insertion_point(class_scope:tetris.Report.Users.QGram)
-      ))
-    ,
     DESCRIPTOR = _REPORT_USERS,
     __module__ = 'tetris_pb2'
     # @@protoc_insertion_point(class_scope:tetris.Report.Users)
@@ -680,13 +730,6 @@ Report = _reflection.GeneratedProtocolMessageType('Report', (_message.Message,),
   ,
 
   JoystickInfo = _reflection.GeneratedProtocolMessageType('JoystickInfo', (_message.Message,), dict(
-
-    Data = _reflection.GeneratedProtocolMessageType('Data', (_message.Message,), dict(
-      DESCRIPTOR = _REPORT_JOYSTICKINFO_DATA,
-      __module__ = 'tetris_pb2'
-      # @@protoc_insertion_point(class_scope:tetris.Report.JoystickInfo.Data)
-      ))
-    ,
     DESCRIPTOR = _REPORT_JOYSTICKINFO,
     __module__ = 'tetris_pb2'
     # @@protoc_insertion_point(class_scope:tetris.Report.JoystickInfo)
@@ -700,17 +743,10 @@ Report = _reflection.GeneratedProtocolMessageType('Report', (_message.Message,),
     ))
   ,
 
-  ScreenCoordsInfo = _reflection.GeneratedProtocolMessageType('ScreenCoordsInfo', (_message.Message,), dict(
-    DESCRIPTOR = _REPORT_SCREENCOORDSINFO,
+  ScreenInfo = _reflection.GeneratedProtocolMessageType('ScreenInfo', (_message.Message,), dict(
+    DESCRIPTOR = _REPORT_SCREENINFO,
     __module__ = 'tetris_pb2'
-    # @@protoc_insertion_point(class_scope:tetris.Report.ScreenCoordsInfo)
-    ))
-  ,
-
-  ScreenPressInfo = _reflection.GeneratedProtocolMessageType('ScreenPressInfo', (_message.Message,), dict(
-    DESCRIPTOR = _REPORT_SCREENPRESSINFO,
-    __module__ = 'tetris_pb2'
-    # @@protoc_insertion_point(class_scope:tetris.Report.ScreenPressInfo)
+    # @@protoc_insertion_point(class_scope:tetris.Report.ScreenInfo)
     ))
   ,
   DESCRIPTOR = _REPORT,
@@ -719,12 +755,9 @@ Report = _reflection.GeneratedProtocolMessageType('Report', (_message.Message,),
   ))
 _sym_db.RegisterMessage(Report)
 _sym_db.RegisterMessage(Report.Users)
-_sym_db.RegisterMessage(Report.Users.QGram)
 _sym_db.RegisterMessage(Report.JoystickInfo)
-_sym_db.RegisterMessage(Report.JoystickInfo.Data)
 _sym_db.RegisterMessage(Report.TactileInfo)
-_sym_db.RegisterMessage(Report.ScreenCoordsInfo)
-_sym_db.RegisterMessage(Report.ScreenPressInfo)
+_sym_db.RegisterMessage(Report.ScreenInfo)
 
 Error = _reflection.GeneratedProtocolMessageType('Error', (_message.Message,), dict(
   DESCRIPTOR = _ERROR,
@@ -748,6 +781,20 @@ ProgressUpdate = _reflection.GeneratedProtocolMessageType('ProgressUpdate', (_me
     # @@protoc_insertion_point(class_scope:tetris.ProgressUpdate.TactileUpdate)
     ))
   ,
+
+  ScreenUpdate = _reflection.GeneratedProtocolMessageType('ScreenUpdate', (_message.Message,), dict(
+
+    Click = _reflection.GeneratedProtocolMessageType('Click', (_message.Message,), dict(
+      DESCRIPTOR = _PROGRESSUPDATE_SCREENUPDATE_CLICK,
+      __module__ = 'tetris_pb2'
+      # @@protoc_insertion_point(class_scope:tetris.ProgressUpdate.ScreenUpdate.Click)
+      ))
+    ,
+    DESCRIPTOR = _PROGRESSUPDATE_SCREENUPDATE,
+    __module__ = 'tetris_pb2'
+    # @@protoc_insertion_point(class_scope:tetris.ProgressUpdate.ScreenUpdate)
+    ))
+  ,
   DESCRIPTOR = _PROGRESSUPDATE,
   __module__ = 'tetris_pb2'
   # @@protoc_insertion_point(class_scope:tetris.ProgressUpdate)
@@ -755,6 +802,22 @@ ProgressUpdate = _reflection.GeneratedProtocolMessageType('ProgressUpdate', (_me
 _sym_db.RegisterMessage(ProgressUpdate)
 _sym_db.RegisterMessage(ProgressUpdate.JoystickUpdate)
 _sym_db.RegisterMessage(ProgressUpdate.TactileUpdate)
+_sym_db.RegisterMessage(ProgressUpdate.ScreenUpdate)
+_sym_db.RegisterMessage(ProgressUpdate.ScreenUpdate.Click)
+
+HistogramUint1D = _reflection.GeneratedProtocolMessageType('HistogramUint1D', (_message.Message,), dict(
+  DESCRIPTOR = _HISTOGRAMUINT1D,
+  __module__ = 'tetris_pb2'
+  # @@protoc_insertion_point(class_scope:tetris.HistogramUint1D)
+  ))
+_sym_db.RegisterMessage(HistogramUint1D)
+
+Coordinate = _reflection.GeneratedProtocolMessageType('Coordinate', (_message.Message,), dict(
+  DESCRIPTOR = _COORDINATE,
+  __module__ = 'tetris_pb2'
+  # @@protoc_insertion_point(class_scope:tetris.Coordinate)
+  ))
+_sym_db.RegisterMessage(Coordinate)
 
 
 # @@protoc_insertion_point(module_scope)
